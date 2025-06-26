@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ألدويان القابضة - الصفحة الرئيسية (Aldowayan Holding - Homepage)</title>
+    <title>ألدويان القابضة - الصفحة الرئيسية</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -18,12 +18,38 @@
         .header-logo {
             background: linear-gradient(135deg, #003366, #0056b3);
             padding: 1.5rem;
-            text-align: center;
+            position: relative;
             border-bottom: 4px solid #003366;
+        }
+
+        .header-logo .logo-container {
+            text-align: center;
         }
 
         .header-logo img {
             max-height: 90px;
+        }
+
+        .header-nav {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+        }
+
+        .header-nav .nav-link {
+            color: #fff;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .header-nav .nav-link:hover {
+            color: #e4f0ff;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
         }
 
         .welcome-banner {
@@ -54,6 +80,14 @@
             font-size: 1.6rem;
             font-weight: bold;
             margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-left: 0.5rem;
+            font-size: 1.4rem;
+            color: #0056b3;
         }
 
         .card {
@@ -103,25 +137,76 @@
             border-radius: 10px;
         }
 
-        .employee-thumbnails {
+        .employee-card {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 1rem;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #e4f0ff;
+            position: relative;
         }
 
-        .employee-thumbnails img {
-            width: 70px;
-            height: 70px;
+        .employee-card:last-child {
+            border-bottom: none;
+        }
+
+        .employee-card .employee-image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .employee-card img {
+            width: 100px;
+            height: 100px;
             object-fit: cover;
             border-radius: 50%;
-            border: 2px solid #003366;
+            border: 3px solid #003366;
+            margin: 0.5rem 0;
             transition: transform 0.2s ease;
         }
 
-        .employee-thumbnails img:hover {
+        .employee-card img:hover {
             transform: scale(1.05);
+        }
+
+        .employee-card .badge-icon {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #003366;
+            color: #fff;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #fff;
+        }
+
+        .employee-card h5 {
+            color: #003366;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .employee-card .department {
+            color: #0056b3;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .employee-card .message {
+            font-size: 0.9rem;
+            color: #1a1a1a;
+        }
+
+        .event-date {
+            font-size: 0.85rem;
+            color: #0056b3;
+            margin-bottom: 0.5rem;
         }
 
         .footer {
@@ -131,154 +216,138 @@
             text-align: center;
             position: relative;
         }
+
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .header-logo {
+                padding: 1rem;
+            }
+
+            .header-nav {
+                position: static;
+                transform: none;
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .header-nav .nav-link {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 
 <body>
     <header class="header-logo">
-        <img src="logo.png" alt="شعار ألدويان القابضة (Aldowayan Holding Logo)">
+        <div class="logo-container">
+            <img src="logo.png" alt="شعار ألدويان القابضة">
+        </div>
+        <nav class="header-nav">
+            <a class="nav-link" href="#apps">تطبيقاتي</a>
+            <a class="nav-link" href="#news">الأحداث والأخبار</a>
+            <a class="nav-link" href="#employee">موظف الشهر</a>
+        </nav>
     </header>
 
     <div class="container-fluid py-4">
         <section class="welcome-banner" data-aos="fade-up">
-            <h1>مرحباً، [اسم الموظف] (Welcome, [Employee Name])</h1>
-            <p>نتمنى لك يوماً مليئاً بالإنجازات في الضويان القابضة (Wishing you a productive day at Aldowayan Holding)
-            </p>
+            <h1>مرحباً، [اسم الموظف]</h1>
+            <p>نتمنى لك يوماً مليئاً بالإنجازات في الضويان القابضة</p>
         </section>
 
-        <section class="mb-5" data-aos="fade-up">
-            <h3 class="section-title">تطبيقاتي وروابط مهمة (My Apps & Important Links)</h3>
+        <section id="apps" class="mb-5" data-aos="fade-up">
+            <h3 class="section-title"><i class="bi bi-grid-fill"></i> تطبيقاتي وروابط مهمة</h3>
             <div class="row row-cols-2 row-cols-md-4 g-3">
                 <div class="col">
-                    <a href="#" class="btn btn-custom w-100"><i class="bi bi-person-lines-fill me-2"></i> نظام الموارد
-                        البشرية (HR System)</a>
+                    <a href="#" class="btn btn-custom w-100"><i class="bi bi-person-lines-fill me-2"></i> نظام الموارد البشرية</a>
                 </div>
                 <div class="col">
-                    <a href="#" class="btn btn-custom w-100"><i class="bi bi-gear-fill me-2"></i> نظام ERP (ERP
-                        System)</a>
+                    <a href="#" class="btn btn-custom w-100"><i class="bi bi-gear-fill me-2"></i> نظام</a>
                 </div>
                 <div class="col">
-                    <a href="#" class="btn btn-custom w-100"><i class="bi bi-envelope-fill me-2"></i> Outlook
-                        (Outlook)</a>
+                    <a href="#" class="btn btn-custom w-100"><i class="bi bi-envelope-fill me-2"></i> Outlook</a>
                 </div>
                 <div class="col">
-                    <a href="#" class="btn btn-custom w-100"><i class="bi bi-person-circle me-2"></i> الملف الشخصي
-                        (Profile)</a>
+                    <a href="#" class="btn btn-custom w-100"><i class="bi bi-person-circle me-2"></i> الملف الشخصي</a>
                 </div>
             </div>
         </section>
 
-        <section class="mb-5" data-aos="fade-up">
-            <h3 class="section-title">الأحداث والأخبار (Events & News)</h3>
+        <section id="news" class="mb-5" data-aos="fade-up">
+            <h3 class="section-title"><i class="bi bi-newspaper"></i> الأحداث والأخبار</h3>
             <div class="row g-3">
                 <div class="col-md-6">
                     <div class="card scrollable-card">
-                        <div class="card-header">حدث الشركة الأخير (Latest Company Event)</div>
+                        <div class="card-header">حدث الشركة الأخير</div>
                         <div class="card-body">
-                            <p>إطلاق مشروع تجاري جديد في المنطقة الشرقية... (Launching a new commercial project in
-                                Eastern Province...)</p>
-                            <p>تفاصيل إضافية... (Additional details...)</p>
-                            <p>مزيد من المعلومات... (More info...)</p>
-                            <p>إطلاق مشروع تجاري جديد في المنطقة الشرقية... (Launching a new commercial project in
-                                Eastern Province...)</p>
-                            <p>تفاصيل إضافية... (Additional details...)</p>
-                            <p>مزيد من المعلومات... (More info...)</p>
+                            <div class="event-date">25 يونيو 2025</div>
+                            <p>إطلاق مشروع تجاري جديد في المنطقة الشرقية...</p>
+                            <div class="event-date">20 يونيو 2025</div>
+                            <p>تفاصيل إضافية...</p>
+                            <div class="event-date">15 يونيو 2025</div>
+                            <p>مزيد من المعلومات...</p>
+                            <div class="event-date">10 يونيو 2025</div>
+                            <p>إطلاق مشروع تجاري جديد في المنطقة الشرقية...</p>
+                            <div class="event-date">5 يونيو 2025</div>
+                            <p>تفاصيل إضافية...</p>
+                            <div class="event-date">1 يونيو 2025</div>
+                            <p>مزيد من المعلومات...</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card scrollable-card">
-                        <div class="card-header">خبر هام (Important News)</div>
+                        <div class="card-header">خبر هام</div>
                         <div class="card-body">
-                            <p>تحديثات على نظام الحضور والانصراف اعتبارًا من الأسبوع القادم... (Updates to attendance
-                                system starting next week...)</p>
-                            <p>يرجى قراءة البريد الإلكتروني الرسمي. (Please read the official email.)</p>
-                            <p>تحديثات على نظام الحضور والانصراف اعتبارًا من الأسبوع القادم... (Updates to attendance
-                                system starting next week...)</p>
-                            <p>يرجى قراءة البريد الإلكتروني الرسمي. (Please read the official email.)</p>
-                            <p>تحديثات على نظام الحضور والانصراف اعتبارًا من الأسبوع القادم... (Updates to attendance
-                                system starting next week...)</p>
-                            <p>يرجى قراءة البريد الإلكتروني الرسمي. (Please read the official email.)</p>
+                            <div class="event-date">26 يونيو 2025</div>
+                            <p>تحديثات على نظام الحضور والانصراف اعتبارًا من الأسبوع القادم...</p>
+                            <div class="event-date">24 يونيو 2025</div>
+                            <p>يرجى قراءة البريد الإلكتروني الرسمي.</p>
+                            <div class="event-date">22 يونيو 2025</div>
+                            <p>تحديثات على نظام الحضور والانصراف اعتبارًا من الأسبوع القادم...</p>
+                            <div class="event-date">20 يونيو 2025</div>
+                            <p>يرجى قراءة البريد الإلكتروني الرسمي.</p>
+                            <div class="event-date">18 يونيو 2025</div>
+                            <p>تحديثات على نظام الحضور والانصراف اعتبارًا من الأسبوع القادم...</p>
+                            <div class="event-date">16 يونيو 2025</div>
+                            <p>يرجى قراءة البريد الإلكتروني الرسمي.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="mb-5" data-aos="fade-up">
-            <h3 class="section-title">موظف الشهر (Employee of the Month)</h3>
+        <section id="employee" class="mb-5" data-aos="fade-up">
+            <h3 class="section-title"><i class="bi bi-star-fill"></i> موظف الشهر</h3>
             <div class="card scrollable-card p-3">
-
                 <!-- Employee 1 -->
-                <div class="row g-3 align-items-center mb-4">
-                    <div class="col-md-3 text-center employee-thumbnails">
-                        <img src="sample-user.png" alt="Ahmed Al-Otaibi" class="img-fluid rounded-circle"
-                            style="width: 70px; height: 70px; object-fit: cover;">
+                <div class="employee-card">
+                    <h5>أحمد العتيبي</h5>
+                    <div class="employee-image-container">
+                        <img src="sample-user.png" alt="Ahmed Al-Otaibi" class="img-fluid">
+                        <i class="bi bi-award-fill badge-icon"></i>
                     </div>
-                    <div class="col-md-9">
-                        <h5 class="card-title">أحمد العتيبي (Ahmed Al-Otaibi)</h5>
-                        <p class="card-text">قسم تقنية المعلومات (IT Department)</p>
-                        <p class="card-text">تفاصيل عن الإنجازات والجهود المبذولة... (Details about achievements and
-                            efforts...)</p>
-                    </div>
+                    <p class="department">قسم تقنية المعلومات</p>
+                    <p class="message">تفاصيل عن الإنجازات والجهود المبذولة...</p>
                 </div>
 
                 <!-- Employee 2 -->
-                <div class="row g-3 align-items-center mb-4">
-                    <div class="col-md-3 text-center employee-thumbnails">
-                        <img src="sample-user.png" alt="Sara Al-Qahtani" class="img-fluid rounded-circle"
-                            style="width: 70px; height: 70px; object-fit: cover;">
+                <div class="employee-card">
+                    <h5>سارة القحطاني</h5>
+                    <div class="employee-image-container">
+                        <img src="sample-user.png" alt="Sara Al-Qahtani" class="img-fluid">
+                        <i class="bi bi-award-fill badge-icon"></i>
                     </div>
-                    <div class="col-md-9">
-                        <h5 class="card-title">سارة القحطاني (Sara Al-Qahtani)</h5>
-                        <p class="card-text">قسم التسويق (Marketing Department)</p>
-                        <p class="card-text">دور ريادي في إطلاق الحملات الإبداعية... (Led innovative campaign
-                            launches...)</p>
-                    </div>
+                    <p class="department">قسم التسويق</p>
+                    <p class="message">دور ريادي في إطلاق الحملات الإبداعية...</p>
                 </div>
-
-                <!-- Employee 3 -->
-                <div class="row g-3 align-items-center mb-4">
-                    <div class="col-md-3 text-center employee-thumbnails">
-                        <img src="sample-user.png" alt="Mohammed Al-Dosari" class="img-fluid rounded-circle"
-                            style="width: 70px; height: 70px; object-fit: cover;">
-                    </div>
-                    <div class="col-md-9">
-                        <h5 class="card-title">محمد الدوسري (Mohammed Al-Dosari)</h5>
-                        <p class="card-text">قسم العمليات (Operations Department)</p>
-                        <p class="card-text">تحسين كفاءة سير العمل وتقليل التكاليف. (Improved workflow efficiency and
-                            cost savings.)</p>
-                    </div>
-                </div>
-
-                <!-- Employee 4 -->
-                <div class="row g-3 align-items-center mb-4">
-                    <div class="col-md-3 text-center employee-thumbnails">
-                        <img src="sample-user.png" alt="Reem Al-Subaie" class="img-fluid rounded-circle"
-                            style="width: 70px; height: 70px; object-fit: cover;">
-                    </div>
-                    <div class="col-md-9">
-                        <h5 class="card-title">ريم السبيعي (Reem Al-Subaie)</h5>
-                        <p class="card-text">قسم الموارد البشرية (HR Department)</p>
-                        <p class="card-text">تعزيز تجربة الموظفين وتطوير السياسات. (Enhanced employee experience and
-                            policy development.)</p>
-                    </div>
-                </div>
-
-                <!-- Employee 5 -->
-                <div class="row g-3 align-items-center">
-                    <div class="col-md-3 text-center employee-thumbnails">
-                        <img src="sample-user.png" alt="Fahad Al-Enezi" class="img-fluid rounded-circle"
-                            style="width: 70px; height: 70px; object-fit: cover;">
-                    </div>
-                    <div class="col-md-9">
-                        <h5 class="card-title">فهد العنزي (Fahad Al-Enezi)</h5>
-                        <p class="card-text">قسم التقنية (Technology Department)</p>
-                        <p class="card-text">إطلاق نظام تقني متطور ساهم في التحول الرقمي. (Launched advanced tech
-                            systems supporting digital transformation.)</p>
-                    </div>
-                </div>
-
             </div>
         </section>
     </div>
@@ -286,13 +355,15 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="mb-0">© 2025 ألدويان القابضة (© 2025 Aldowayan Holding)</p>
+            <p class="mb-0">© 2025 ألدويان القابضة</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>AOS.init({ duration: 700, once: true });</script>
+    <script>
+        AOS.init({ duration: 700, once: true });
+    </script>
 </body>
 
 </html>
