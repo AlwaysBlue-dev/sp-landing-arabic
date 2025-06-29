@@ -8,9 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'DIN Next LT Arabic', sans-serif;
+            font-family: 'Tajawal', sans-serif;
             background-color: #f4f6f8;
             color: #1a1a1a;
         }
@@ -56,41 +57,71 @@
             border: none;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            background-color: #003366;
-            color: #fff;
+            background-color: #E5E7EB;
+            color: #4B5EAA;
             transition: all 0.3s ease-in-out;
         }
 
         #apps .card:hover {
-            background-color: #e4f0ff;
-            color: #003366;
+            background-color: #003366;
+            color: #e4f0ff;
         }
 
         #apps .card i {
-            color: #fff;
+            color: #4B5EAA;
         }
-
 
         .welcome-banner {
-            background: linear-gradient(135deg, #003366, #0056b3);
-            color: #fff;
-            padding: 4rem 2rem;
-            text-align: center;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             overflow: hidden;
+            border-radius: 12px;
+            height: 400px;
+            /* increased height */
         }
 
-        .welcome-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+        /* Left: Illustration */
+        .banner-left {
+            text-align: left;
+            padding: 1rem;
+        }
+
+        .banner-left img {
+            max-height: 300px;
+        }
+
+        /* Center: Arabic text */
+        .banner-center {
+            flex: 1;
+            text-align: center;
+            font-size: 1.8rem;
+            color: #003087;
+        }
+
+        /* Right: Blue trapezoid rotated to LTR */
+        .banner-right {
+            background-color: #003366;
+            color: #fff;
+            padding: 4rem;
+            clip-path: polygon(0 0, 85% 0, 100% 100%, 10% 100%);
+            text-align: left;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M0 0L50 50L100 0L150 50L200 0" stroke="%23ffffff" stroke-opacity="0.05" stroke-width="2" fill="none"/></svg>') repeat;
-            opacity: 0.05;
+            /* full section height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+        }
+
+        .banner-right h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .banner-right p {
+            font-size: 1.2rem;
         }
 
         .section-title {
@@ -134,18 +165,18 @@
             color: #003366;
         }
 
+        .btn-custom-smaller {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
+        }
+
         .card-header {
             background-color: #0056b3;
             color: #fff;
             font-weight: bold;
         }
 
-        .scrollable-card {
-            max-height: 350px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding-right: 0.5rem;
-        }
+
 
         .scrollable-card::-webkit-scrollbar {
             width: 6px;
@@ -155,6 +186,22 @@
             background-color: rgba(0, 51, 102, 0.3);
             border-radius: 10px;
         }
+
+        #events .scrollable-card {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        #news .scrollable-card {
+            max-height: 710px;
+            overflow-y: auto;
+        }
+
+        #employee .scrollable-card {
+            max-height: 330px;
+            overflow-y: auto;
+        }
+
 
         .news-item {
             background-color: #fff;
@@ -236,6 +283,38 @@
             color: #1a1a1a;
         }
 
+        .event-item {
+            background-color: #f1f5f9;
+            /* Light grey background for each event */
+            transition: background-color 0.3s ease;
+        }
+
+        .event-item:hover {
+            background-color: #e2e8f0;
+            /* Slightly darker on hover */
+        }
+
+        .event-date-box {
+            background-color: #003087;
+            /* Primary blue */
+            border-radius: 4px;
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 60px;
+            padding: 6px 4px;
+        }
+
+        .event-date-box i {
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+        }
+
+
+
+
         .footer {
             background-color: #003087;
             color: #fff;
@@ -279,166 +358,264 @@
     </header>
 
     <div class="container-fluid py-4">
-        <section class="welcome-banner" data-aos="fade-up">
-            <h1>مرحباً، [اسم الموظف]</h1>
-            <p>نتمنى لك يوماً مليئاً بالإنجازات في الضويان القابضة</p>
+        <section class="welcome-banner d-flex align-items-center">
+            <!-- Left side: illustration -->
+            <div class="banner-left">
+                <img src="hero.png" alt="Illustration" class="img-fluid">
+            </div>
+
+            <!-- Center: Arabic text -->
+            <div class="banner-center">
+                <h2 style="font-weight: 700;">بوابة الموظفين</h2>
+            </div>
+
+            <!-- Right side: blue trapezoid with English text -->
+            <div class="banner-right">
+                <h1>Welcome, Employee Care</h1>
+
+            </div>
         </section>
 
-        <section id="apps" class="mb-5" data-aos="fade-up">
+        <section id="apps" class="mb-5 mt-5" data-aos="fade-up">
             <h3 class="section-title"><i class="bi bi-grid-fill"></i> تطبيقاتي وروابط مهمة</h3>
-            <div class="row row-cols-2 row-cols-md-5 g-3">
+            <div class="row row-cols-10 g-3">
                 <div class="col">
                     <a href="#" class="text-decoration-none">
-                        <div class="card text-center p-3"
-                            style="background-color: #003366; color: #fff; transition: all 0.3s ease;">
-                            <i class="bi bi-person-lines-fill" style="font-size: 2rem;"></i>
-                            <p class="mb-0 mt-2">نظام الموارد البشرية</p>
+                        <div class="card text-center p-3">
+                            <i class="bi bi-globe" style="font-size: 2rem;"></i>
+                            <p class="mb-0 mt-2">موعد الفورة</p>
                         </div>
                     </a>
                 </div>
                 <div class="col">
                     <a href="#" class="text-decoration-none">
-                        <div class="card text-center p-3"
-                            style="background-color: #003366; color: #fff; transition: all 0.3s ease;">
-                            <i class="bi bi-gear-fill" style="font-size: 2rem;"></i>
-                            <p class="mb-0 mt-2">نظام</p>
+                        <div class="card text-center p-3">
+                            <i class="bi bi-grid-3x3-gap" style="font-size: 2rem;"></i>
+                            <p class="mb-0 mt-2">الدخال</p>
+
                         </div>
                     </a>
                 </div>
                 <div class="col">
                     <a href="#" class="text-decoration-none">
-                        <div class="card text-center p-3"
-                            style="background-color: #003366; color: #fff; transition: all 0.3s ease;">
-                            <i class="bi bi-envelope-fill" style="font-size: 2rem;"></i>
-                            <p class="mb-0 mt-2">Outlook</p>
+                        <div class="card text-center p-3">
+                            <i class="bi bi-triangle-fill" style="font-size: 2rem;"></i>
+                            <p class="mb-0 mt-2">ERP</p>
                         </div>
                     </a>
                 </div>
                 <div class="col">
                     <a href="#" class="text-decoration-none">
-                        <div class="card text-center p-3"
-                            style="background-color: #003366; color: #fff; transition: all 0.3s ease;">
-                            <i class="bi bi-person-circle" style="font-size: 2rem;"></i>
-                            <p class="mb-0 mt-2">الملف الشخصي</p>
+                        <div class="card text-center p-3">
+                            <i class="bi bi-grid" style="font-size: 2rem;"></i>
+                            <p class="mb-0 mt-2">Teams/Planner</p>
                         </div>
                     </a>
                 </div>
                 <div class="col">
                     <a href="#" class="text-decoration-none">
-                        <div class="card text-center p-3"
-                            style="background-color: #003366; color: #fff; transition: all 0.3s ease;">
-                            <i class="bi bi-shop" style="font-size: 2rem;"></i>
-                            <p class="mb-0 mt-2">التسوق</p>
+                        <div class="card text-center p-3">
+                            <i class="bi bi-circle-half" style="font-size: 2rem;"></i>
+                            <p class="mb-0 mt-2">MenaITech</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card text-center p-3">
+                            <i class="bi bi-file-text" style="font-size: 2rem;"></i>
+                            <p class="mb-0 mt-2">التصنيفات</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card text-center p-3">
+                            <i class="bi bi-person" style="font-size: 2rem;"></i>
+                            <p class="mb-0 mt-2">الصناديق</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card text-center p-3">
+                            <i class="bi bi-book" style="font-size: 2rem;"></i>
+                            <p class="mb-0 mt-2">استمارة</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card text-center p-3">
+                            <i class="bi bi-box" style="font-size: 2rem;"></i>
+                            <p class="mb-0 mt-2">الخدمة</p>
                         </div>
                     </a>
                 </div>
             </div>
         </section>
-
-
-        <section id="news" class="mb-5" data-aos="fade-up">
-            <h3 class="section-title"><i class="bi bi-newspaper"></i> الأخبار</h3>
-            <div class="card scrollable-card">
-                <div class="card-body">
-                    <div class="news-item d-flex align-items-center mb-3">
-                        <img src="sample-news.png" alt="News Image" class="img-fluid me-3"
-                            style="width: 100px; height: 100px; object-fit: cover;">
-                        <div>
-                            <div class="event-date">26 يونيو 2025</div>
-                            <h5>تحديثات نظام الحضور</h5>
-                            <p>تحديثات على نظام الحضور والانصراف اعتبارًا من الأسبوع القادم...</p>
-                            <a href="#" class="btn btn-sm btn-custom">اقرأ المزيد</a>
-                        </div>
-                    </div>
-                    <div class="news-item d-flex align-items-center mb-3">
-                        <img src="sample-news.png" alt="News Image" class="img-fluid me-3"
-                            style="width: 100px; height: 100px; object-fit: cover;">
-                        <div>
-                            <div class="event-date">24 يونيو 2025</div>
-                            <h5>إعلان هام</h5>
-                            <p>يرجى قراءة البريد الإلكتروني الرسمي...</p>
-                            <a href="#" class="btn btn-sm btn-custom">اقرأ المزيد</a>
-                        </div>
-                    </div>
-                    <div class="news-item d-flex align-items-center mb-3">
-                        <img src="sample-news.png" alt="News Image" class="img-fluid me-3"
-                            style="width: 100px; height: 100px; object-fit: cover;">
-                        <div>
-                            <div class="event-date">22 يونيو 2025</div>
-                            <h5>تحديثات جديدة</h5>
-                            <p>تحديثات إضافية على النظام...</p>
-                            <a href="#" class="btn btn-sm btn-custom">اقرأ المزيد</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="events" class="mb-5" data-aos="fade-up">
-            <h3 class="section-title"><i class="bi bi-calendar-event"></i> الأحداث</h3>
-            <div class="row row-cols-1 row-cols-md-3 g-3">
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="sample-event.jpg" class="card-img-top" alt="Event Image">
+        <div class="row">
+            <!-- Left Side: News -->
+            <div class="col-md-8">
+                <section id="news" class="mb-4" data-aos="fade-up">
+                    <h3 class="section-title"><i class="bi bi-newspaper"></i> الأخبار</h3>
+                    <div class="card scrollable-card">
                         <div class="card-body">
-                            <h5 class="card-title">إطلاق مشروع جديد</h5>
-                            <p class="card-text"><i class="bi bi-calendar-event"></i> 25 يونيو 2025</p>
-                            <p class="card-text"><i class="bi bi-clock"></i> 10:00 صباحاً</p>
-                            <p class="card-text">إطلاق مشروع تجاري جديد في المنطقة الشرقية...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="sample-event.jpg" class="card-img-top" alt="Event Image">
-                        <div class="card-body">
-                            <h5 class="card-title">اجتماع فريق العمل</h5>
-                            <p class="card-text"><i class="bi bi-calendar-event"></i> 20 يونيو 2025</p>
-                            <p class="card-text"><i class="bi bi-clock"></i> 02:00 مساءً</p>
-                            <p class="card-text">تفاصيل إضافية حول الاجتماع...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="sample-event.jpg" class="card-img-top" alt="Event Image">
-                        <div class="card-body">
-                            <h5 class="card-title">ورشة عمل</h5>
-                            <p class="card-text"><i class="bi bi-calendar-event"></i> 15 يونيو 2025</p>
-                            <p class="card-text"><i class="bi bi-clock"></i> 09:00 صباحاً</p>
-                            <p class="card-text">مزيد من المعلومات حول الورشة...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                            <div class="news-item d-flex align-items-center mb-3">
+                                <img src="sample-news.png" alt="News Image" class="img-fluid me-3"
+                                    style="width: 100px; height: 100px; object-fit: cover;">
+                                <div>
+                                    <div class="event-date">26 يونيو 2025</div>
+                                    <h5>تحديثات نظام الحضور</h5>
+                                    <p>تحديثات على نظام الحضور والانصراف اعتبارًا من الأسبوع القادم...</p>
+                                    <a href="#" class="btn btn-custom btn-custom-smaller">اقرأ المزيد</a>
+                                </div>
+                            </div>
 
-        <section id="employee" class="mb-5" data-aos="fade-up">
-            <h3 class="section-title"><i class="bi bi-star-fill"></i> موظف الشهر</h3>
-            <div class="card scrollable-card p-3">
-                <!-- Employee 1 -->
-                <div class="employee-card">
-                    <h5>أحمد العتيبي</h5>
-                    <div class="employee-image-container">
-                        <img src="sample-user.png" alt="Ahmed Al-Otaibi" class="img-fluid">
-                        <i class="bi bi-award-fill badge-icon"></i>
-                    </div>
-                    <p class="department">قسم تقنية المعلومات</p>
-                    <p class="message">تفاصيل عن الإنجازات والجهود المبذولة...</p>
-                </div>
+                            <div class="news-item d-flex align-items-center mb-3">
+                                <img src="sample-news.png" alt="News Image" class="img-fluid me-3"
+                                    style="width: 100px; height: 100px; object-fit: cover;">
+                                <div>
+                                    <div class="event-date">25 يونيو 2025</div>
+                                    <h5>إعلان هام</h5>
+                                    <p>يرجى قراءة البريد الإلكتروني الرسمي لمزيد من التفاصيل...</p>
+                                    <a href="#" class="btn btn-custom btn-custom-smaller">اقرأ المزيد</a>
+                                </div>
+                            </div>
 
-                <!-- Employee 2 -->
-                <div class="employee-card">
-                    <h5>سارة القحطاني</h5>
-                    <div class="employee-image-container">
-                        <img src="sample-user.png" alt="Sara Al-Qahtani" class="img-fluid">
-                        <i class="bi bi-award-fill badge-icon"></i>
+                            <div class="news-item d-flex align-items-center mb-3">
+                                <img src="sample-news.png" alt="News Image" class="img-fluid me-3"
+                                    style="width: 100px; height: 100px; object-fit: cover;">
+                                <div>
+                                    <div class="event-date">24 يونيو 2025</div>
+                                    <h5>تحديثات جديدة</h5>
+                                    <p>تحديثات إضافية على النظام لتحسين الأداء...</p>
+                                    <a href="#" class="btn btn-custom btn-custom-smaller">اقرأ المزيد</a>
+                                </div>
+                            </div>
+
+                            <div class="news-item d-flex align-items-center mb-3">
+                                <img src="sample-news.png" alt="News Image" class="img-fluid me-3"
+                                    style="width: 100px; height: 100px; object-fit: cover;">
+                                <div>
+                                    <div class="event-date">23 يونيو 2025</div>
+                                    <h5>صيانة دورية</h5>
+                                    <p>سيتم إجراء صيانة دورية للنظام يوم الجمعة...</p>
+                                    <a href="#" class="btn btn-custom btn-custom-smaller">اقرأ المزيد</a>
+                                </div>
+                            </div>
+
+                            <div class="news-item d-flex align-items-center mb-3">
+                                <img src="sample-news.png" alt="News Image" class="img-fluid me-3"
+                                    style="width: 100px; height: 100px; object-fit: cover;">
+                                <div>
+                                    <div class="event-date">22 يونيو 2025</div>
+                                    <h5>إطلاق ميزة جديدة</h5>
+                                    <p>تم إطلاق ميزة جديدة لتسهيل عمليات الموظفين...</p>
+                                    <a href="#" class="btn btn-custom btn-custom-smaller">اقرأ المزيد</a>
+                                </div>
+                            </div>
+
+
+                            <div class="news-item d-flex align-items-center mb-3">
+                                <img src="sample-news.png" alt="News Image" class="img-fluid me-3"
+                                    style="width: 100px; height: 100px; object-fit: cover;">
+                                <div>
+                                    <div class="event-date">21 يونيو 2025</div>
+                                    <h5>إعلان داخلي</h5>
+                                    <p>يرجى الاطلاع على الإعلان الداخلي المرسل اليوم...</p>
+                                    <a href="#" class="btn btn-custom btn-custom-smaller">اقرأ المزيد</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="department">قسم التسويق</p>
-                    <p class="message">دور ريادي في إطلاق الحملات الإبداعية...</p>
-                </div>
+                </section>
+
             </div>
-        </section>
+
+            <!-- Right Side: Employee of the Month + Events -->
+            <div class="col-md-4">
+                <!-- Employee of the Month Section -->
+                <section id="employee" class="mb-4" data-aos="fade-up">
+                    <h3 class="section-title"><i class="bi bi-star-fill"></i> موظف الشهر</h3>
+                    <div class="card scrollable-card p-3">
+                        <div class="employee-card">
+                            <h5>أحمد العتيبي</h5>
+                            <div class="employee-image-container">
+                                <img src="sample-user.png" alt="Ahmed Al-Otaibi" class="img-fluid">
+                                <i class="bi bi-award-fill badge-icon"></i>
+                            </div>
+                            <p class="department">قسم تقنية المعلومات</p>
+                            <p class="message">تفاصيل عن الإنجازات والجهود المبذولة...</p>
+                        </div>
+
+                        <!-- Add more employee cards as needed -->
+
+
+                    </div>
+                </section>
+
+
+
+
+                <!-- Events Section -->
+                <section id="events" class="mb-4" data-aos="fade-up">
+                    <h3 class="section-title"><i class="bi bi-calendar-event"></i> الأحداث</h3>
+                    <div class="card scrollable-card">
+                        <div class="card-body">
+                            <!-- Event Item -->
+                            <a href="#"
+                                class="event-item d-flex justify-content-between align-items-center mb-3 text-decoration-none text-dark p-2 rounded">
+                                <div class="event-date-box text-white text-center px-2 py-1">
+                                    <i class="bi bi-calendar-event"></i>
+                                    <div>25 يونيو 2025</div>
+                                </div>
+                                <h5 class="mb-0">إطلاق مشروع جديد</h5>
+                            </a>
+
+                            <a href="#"
+                                class="event-item d-flex justify-content-between align-items-center mb-3 text-decoration-none text-dark p-2 rounded">
+                                <div class="event-date-box text-white text-center px-2 py-1">
+                                    <i class="bi bi-calendar-event"></i>
+                                    <div>20 يونيو 2025</div>
+                                </div>
+                                <h5 class="mb-0">اجتماع فريق العمل</h5>
+                            </a>
+
+                            <a href="#"
+                                class="event-item d-flex justify-content-between align-items-center mb-3 text-decoration-none text-dark p-2 rounded">
+                                <div class="event-date-box text-white text-center px-2 py-1">
+                                    <i class="bi bi-calendar-event"></i>
+                                    <div>15 يونيو 2025</div>
+                                </div>
+                                <h5 class="mb-0">ورشة عمل</h5>
+                            </a>
+
+                            <a href="#"
+                                class="event-item d-flex justify-content-between align-items-center mb-3 text-decoration-none text-dark p-2 rounded">
+                                <div class="event-date-box text-white text-center px-2 py-1">
+                                    <i class="bi bi-calendar-event"></i>
+                                    <div>10 يونيو 2025</div>
+                                </div>
+                                <h5 class="mb-0">ندوة تدريبية</h5>
+                            </a>
+
+                            <a href="#"
+                                class="event-item d-flex justify-content-between align-items-center mb-3 text-decoration-none text-dark p-2 rounded">
+                                <div class="event-date-box text-white text-center px-2 py-1">
+                                    <i class="bi bi-calendar-event"></i>
+                                    <div>05 يونيو 2025</div>
+                                </div>
+                                <h5 class="mb-0">مؤتمر سنوي</h5>
+                            </a>
+
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
     </div>
 
     <footer class="footer">
