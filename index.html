@@ -10,6 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* ============= Base Styles ============= */
+
         body {
             font-family: 'Tajawal', sans-serif;
             background-color: #f4f6f8;
@@ -24,7 +26,7 @@
         }
 
         .header-logo .logo-container {
-            text-align: center;
+            text-align: left;
         }
 
         .header-logo img {
@@ -53,35 +55,15 @@
             border-radius: 5px;
         }
 
-        #apps .card {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            background-color: #E5E7EB;
-            color: #4B5EAA;
-            transition: all 0.3s ease-in-out;
-        }
-
-        #apps .card:hover {
-            background-color: #003366;
-            color: #e4f0ff;
-        }
-
-        #apps .card i {
-            color: #4B5EAA;
-        }
-
-        .welcome-banner {
+        #welcome-banner {
             display: flex;
             align-items: center;
             justify-content: space-between;
             overflow: hidden;
             border-radius: 12px;
             height: 400px;
-            /* increased height */
         }
 
-        /* Left: Illustration */
         .banner-left {
             text-align: left;
             padding: 1rem;
@@ -89,9 +71,10 @@
 
         .banner-left img {
             max-height: 300px;
+            width: 100%;
+            height: auto;
         }
 
-        /* Center: Arabic text */
         .banner-center {
             flex: 1;
             text-align: center;
@@ -99,19 +82,17 @@
             color: #003087;
         }
 
-        /* Right: Blue trapezoid rotated to LTR */
         .banner-right {
-            background-color: #003366;
+            background-color: #273773;
             color: #fff;
-            padding: 4rem;
-            clip-path: polygon(0 0, 85% 0, 100% 100%, 10% 100%);
+            padding: 1rem;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            border-radius: 12px;
             text-align: left;
-            height: 100%;
-            /* full section height */
             display: flex;
             flex-direction: column;
             justify-content: center;
-
+            height: 350px;
         }
 
         .banner-right h1 {
@@ -138,6 +119,24 @@
             margin-left: 0.5rem;
             font-size: 1.4rem;
             color: #0056b3;
+        }
+
+        #apps .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            background-color: #E5E7EB;
+            color: #4B5EAA;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #apps .card:hover {
+            background-color: #003366;
+            color: #e4f0ff;
+        }
+
+        #apps .card i {
+            color: #4B5EAA;
         }
 
         .card {
@@ -176,8 +175,6 @@
             font-weight: bold;
         }
 
-
-
         .scrollable-card::-webkit-scrollbar {
             width: 6px;
         }
@@ -201,7 +198,6 @@
             max-height: 330px;
             overflow-y: auto;
         }
-
 
         .news-item {
             background-color: #fff;
@@ -285,18 +281,15 @@
 
         .event-item {
             background-color: #f1f5f9;
-            /* Light grey background for each event */
             transition: background-color 0.3s ease;
         }
 
         .event-item:hover {
             background-color: #e2e8f0;
-            /* Slightly darker on hover */
         }
 
         .event-date-box {
             background-color: #003087;
-            /* Primary blue */
             border-radius: 4px;
             font-size: 0.85rem;
             display: flex;
@@ -312,15 +305,43 @@
             margin-bottom: 2px;
         }
 
-
-
-
         .footer {
             background-color: #003087;
             color: #fff;
             padding: 2rem 0;
             text-align: center;
             position: relative;
+        }
+
+        /* ============= Responsive Breakpoints ============= */
+
+        @media (max-width: 992px) {
+            #welcome-banner {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem 0;
+            }
+
+            .banner-left img {
+                max-height: 200px;
+            }
+
+            .banner-center {
+                font-size: 1.6rem;
+                margin: 1rem 0;
+            }
+
+            .banner-right {
+                width: 100%;
+                clip-path: none;
+                border-radius: 12px;
+                height: auto;
+                padding: 1rem;
+            }
+
+            .banner-right h1 {
+                font-size: 1.8rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -340,6 +361,24 @@
                 padding: 0.5rem 0.75rem;
                 font-size: 0.9rem;
             }
+
+            .banner-center {
+                font-size: 1.4rem;
+            }
+
+            .banner-right h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .banner-center {
+                font-size: 1.2rem;
+            }
+
+            .banner-right h1 {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
@@ -357,7 +396,7 @@
         </nav>
     </header>
 
-    <div class="container-fluid py-4">
+    <div class="container py-4">
         <section class="welcome-banner d-flex align-items-center">
             <!-- Left side: illustration -->
             <div class="banner-left">
@@ -371,7 +410,7 @@
 
             <!-- Right side: blue trapezoid with English text -->
             <div class="banner-right">
-                <h1>Welcome, Employee Care</h1>
+                <h1>Welcome, [User Name]</h1>
 
             </div>
         </section>
